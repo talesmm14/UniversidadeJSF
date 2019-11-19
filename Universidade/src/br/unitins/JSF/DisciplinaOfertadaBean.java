@@ -97,12 +97,12 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public List<DisciplinaOfertada> getDisciplinaOfertadas() {
+		if (disciplinaOfertadas == null)
+			disciplinaOfertadas = new ArrayList<DisciplinaOfertada>();
 		return disciplinaOfertadas;
 	}
 
 	public void setDisciplinaOfertadas(List<DisciplinaOfertada> disciplinaOfertadas) {
-		if (disciplinaOfertadas == null)
-			disciplinaOfertadas = new ArrayList<DisciplinaOfertada>();
 		this.disciplinaOfertadas = disciplinaOfertadas;
 	}
 

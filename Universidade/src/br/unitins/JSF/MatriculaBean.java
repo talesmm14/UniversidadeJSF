@@ -90,12 +90,12 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public List<Matricula> getMatriculas() {
+		if (matriculas == null)
+			matriculas = new ArrayList<Matricula>();
 		return matriculas;
 	}
 
 	public void setMatriculas(List<Matricula> matriculas) {
-		if (matriculas == null)
-			matriculas = new ArrayList<Matricula>();
 		this.matriculas = matriculas;
 	}
 
@@ -137,6 +137,22 @@ public class MatriculaBean implements Serializable {
 
 	public void setIdDisciplinaOfertada(Integer idDisciplinaOfertada) {
 		this.idDisciplinaOfertada = idDisciplinaOfertada;
+	}
+
+	public AlunoEJB getAlunoEJB() {
+		return alunoEJB;
+	}
+
+	public void setAlunoEJB(AlunoEJB alunoEJB) {
+		this.alunoEJB = alunoEJB;
+	}
+
+	public DisciplinaOfertadaEJB getDisciplinaOfertadaEJB() {
+		return disciplinaOfertadaEJB;
+	}
+
+	public void setDisciplinaOfertadaEJB(DisciplinaOfertadaEJB disciplinaOfertadaEJB) {
+		this.disciplinaOfertadaEJB = disciplinaOfertadaEJB;
 	}
 	
 }

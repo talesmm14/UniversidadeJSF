@@ -75,12 +75,12 @@ public class SemestreBean implements Serializable {
 	}
 
 	public List<Semestre> getSemestres() {
+		if (semestres == null)
+			semestres = new ArrayList<Semestre>();
 		return semestres;
 	}
 
 	public void setSemestres(List<Semestre> semestres) {
-		if (semestres == null)
-			semestres = new ArrayList<Semestre>();
 		this.semestres = semestres;
 	}
 

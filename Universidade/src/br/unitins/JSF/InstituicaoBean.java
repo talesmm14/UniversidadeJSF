@@ -75,12 +75,12 @@ public class InstituicaoBean implements Serializable {
 	}
 
 	public List<Instituicao> getInstituicaos() {
+		if (instituicoes == null)
+			instituicoes = new ArrayList<Instituicao>();
 		return instituicoes;
 	}
 
 	public void setInstituicaos(List<Instituicao> instituicoes) {
-		if (instituicoes == null)
-			instituicoes = new ArrayList<Instituicao>();
 		this.instituicoes = instituicoes;
 	}
 
@@ -90,6 +90,16 @@ public class InstituicaoBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public List<Instituicao> getInstituicoes() {
+		if (instituicoes == null)
+			instituicoes = new ArrayList<Instituicao>();
+		return instituicoes;
+	}
+
+	public void setInstituicoes(List<Instituicao> instituicoes) {
+		this.instituicoes = instituicoes;
 	}
 	
 }

@@ -75,12 +75,12 @@ public class ProfessorBean implements Serializable {
 	}
 
 	public List<Professor> getProfessors() {
+		if (professors == null)
+			professors = new ArrayList<Professor>();
 		return professors;
 	}
 
 	public void setProfessors(List<Professor> professors) {
-		if (professors == null)
-			professors = new ArrayList<Professor>();
 		this.professors = professors;
 	}
 

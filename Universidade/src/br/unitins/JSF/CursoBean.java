@@ -82,12 +82,12 @@ public class CursoBean implements Serializable{
 	}
 
 	public List<Curso> getCursos() {
+		if (cursos == null)
+			cursos = new ArrayList<Curso>();
 		return cursos;
 	}
 
 	public void setCursos(List<Curso> cursos) {
-		if (cursos == null)
-			cursos = new ArrayList<Curso>();
 		this.cursos = cursos;
 	}
 
@@ -97,6 +97,30 @@ public class CursoBean implements Serializable{
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public InstituicaoEJB getInstituicaoEJB() {
+		return instituicaoEJB;
+	}
+
+	public void setInstituicaoEJB(InstituicaoEJB instituicaoEJB) {
+		this.instituicaoEJB = instituicaoEJB;
+	}
+
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+
+	public Integer getIdInstituicao() {
+		return idInstituicao;
+	}
+
+	public void setIdInstituicao(Integer idInstituicao) {
+		this.idInstituicao = idInstituicao;
 	}
 	
 }

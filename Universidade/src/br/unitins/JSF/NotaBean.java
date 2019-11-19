@@ -83,12 +83,12 @@ public class NotaBean implements Serializable {
 	}
 
 	public List<Nota> getNotas() {
+		if (notas == null)
+			notas = new ArrayList<Nota>();
 		return notas;
 	}
 
 	public void setNotas(List<Nota> notas) {
-		if (notas == null)
-			notas = new ArrayList<Nota>();
 		this.notas = notas;
 	}
 
@@ -98,6 +98,30 @@ public class NotaBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public MatriculaEJB getMatriculaEJB() {
+		return matriculaEJB;
+	}
+
+	public void setMatriculaEJB(MatriculaEJB matriculaEJB) {
+		this.matriculaEJB = matriculaEJB;
+	}
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+
+	public Integer getIdMatricula() {
+		return idMatricula;
+	}
+
+	public void setIdMatricula(Integer idMatricula) {
+		this.idMatricula = idMatricula;
 	}
 	
 }

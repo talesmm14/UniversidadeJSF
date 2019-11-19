@@ -25,12 +25,12 @@ public class PeriodoBean implements Serializable {
 	
 	private List<Disciplina> disciplinas;
 	
-	private List<Periodo> Periodos;
+	private List<Periodo> periodos;
 	private Boolean alterar = false;
 
 	@PostConstruct
 	public void init() {
-		Periodos = periodoEJB.findAll();
+		periodos = periodoEJB.findAll();
 	}
 
 	public String inserir() {
@@ -87,13 +87,13 @@ public class PeriodoBean implements Serializable {
 	}
 
 	public List<Periodo> getPeriodos() {
-		return Periodos;
+		if (periodos == null)
+			periodos = new ArrayList<Periodo>();
+		return periodos;
 	}
 
 	public void setPeriodos(List<Periodo> periodos) {
-		if (periodos == null)
-			periodos = new ArrayList<Periodo>();
-		Periodos = periodos;
+		this.periodos = periodos;
 	}
 
 	public Boolean getAlterar() {
@@ -102,6 +102,24 @@ public class PeriodoBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public DisciplinaEJB getDisciplinaEJB() {
+		return disciplinaEJB;
+	}
+
+	public void setDisciplinaEJB(DisciplinaEJB disciplinaEJB) {
+		this.disciplinaEJB = disciplinaEJB;
+	}
+
+	public List<Disciplina> getDisciplinas() {
+		if (disciplinas == null)
+			disciplinas = new ArrayList<Disciplina>();
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 	
 }

@@ -94,12 +94,12 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public List<MatrizCurricular> getMatrizCurriculars() {
+		if (matrizCurriculars == null)
+			matrizCurriculars = new ArrayList<MatrizCurricular>();
 		return matrizCurriculars;
 	}
 
 	public void setMatrizCurriculars(List<MatrizCurricular> matrizCurriculars) {
-		if (matrizCurriculars == null)
-			matrizCurriculars = new ArrayList<MatrizCurricular>();
 		this.matrizCurriculars = matrizCurriculars;
 	}
 

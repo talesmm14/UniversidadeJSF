@@ -83,13 +83,13 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public List<Frequencia> getFrequencias() {
+		if (frequencias == null) {
+			frequencias = new ArrayList<Frequencia>();
+		}
 		return frequencias;
 	}
 
 	public void setFrequencias(List<Frequencia> frequencias) {
-		if (frequencias == null) {
-			frequencias = new ArrayList<Frequencia>();
-		}
 		this.frequencias = frequencias;
 	}
 
@@ -99,6 +99,30 @@ public class FrequenciaBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public MatriculaEJB getMatriculaEJB() {
+		return matriculaEJB;
+	}
+
+	public void setMatriculaEJB(MatriculaEJB matriculaEJB) {
+		this.matriculaEJB = matriculaEJB;
+	}
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+
+	public Integer getIdMatricula() {
+		return idMatricula;
+	}
+
+	public void setIdMatricula(Integer idMatricula) {
+		this.idMatricula = idMatricula;
 	}
 	
 }

@@ -74,12 +74,12 @@ public class AlunoBean implements Serializable {
 	}
 
 	public List<Aluno> getAlunos() {
+		if (alunos == null)
+			alunos = new ArrayList<Aluno>();
 		return alunos;
 	}
 
 	public void setAlunos(List<Aluno> alunos) {
-		if (alunos == null)
-			alunos = new ArrayList<Aluno>();
 		this.alunos = alunos;
 	}
 

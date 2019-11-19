@@ -75,12 +75,12 @@ public class DisciplinaBean implements Serializable {
 	}
 
 	public List<Disciplina> getDisciplinas() {
+		if (disciplinas == null) 
+			disciplinas = new ArrayList<Disciplina>();
 		return disciplinas;
 	}
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
-		if (disciplinas == null) 
-			disciplinas = new ArrayList<Disciplina>();
 		this.disciplinas = disciplinas;
 	}
 
