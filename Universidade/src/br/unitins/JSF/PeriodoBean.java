@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -90,6 +91,8 @@ public class PeriodoBean implements Serializable {
 	}
 
 	public void setPeriodos(List<Periodo> periodos) {
+		if (periodos == null)
+			periodos = new ArrayList<Periodo>();
 		Periodos = periodos;
 	}
 

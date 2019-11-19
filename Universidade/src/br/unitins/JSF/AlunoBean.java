@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -77,6 +78,8 @@ public class AlunoBean implements Serializable {
 	}
 
 	public void setAlunos(List<Aluno> alunos) {
+		if (alunos == null)
+			alunos = new ArrayList<Aluno>();
 		this.alunos = alunos;
 	}
 

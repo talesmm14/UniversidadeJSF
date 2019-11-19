@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,12 +20,12 @@ public class InstituicaoBean implements Serializable {
 
 	private Instituicao instituicao;
 
-	private List<Instituicao> instituicaos;
+	private List<Instituicao> instituicoes;
 	private Boolean alterar = false;
 
 	@PostConstruct
 	public void init() {
-		instituicaos = instituicaoEJB.findAll();
+		instituicoes = instituicaoEJB.findAll();
 	}
 
 	public String inserir() {
@@ -74,11 +75,13 @@ public class InstituicaoBean implements Serializable {
 	}
 
 	public List<Instituicao> getInstituicaos() {
-		return instituicaos;
+		return instituicoes;
 	}
 
-	public void setInstituicaos(List<Instituicao> instituicaos) {
-		this.instituicaos = instituicaos;
+	public void setInstituicaos(List<Instituicao> instituicoes) {
+		if (instituicoes == null)
+			instituicoes = new ArrayList<Instituicao>();
+		this.instituicoes = instituicoes;
 	}
 
 	public Boolean getAlterar() {

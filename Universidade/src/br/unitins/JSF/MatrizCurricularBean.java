@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +13,6 @@ import br.unitins.EJB.CursoEJB;
 import br.unitins.EJB.MatrizCurricularEJB;
 import br.unitins.EJB.PeriodoEJB;
 import br.unitins.model.Curso;
-import br.unitins.model.Disciplina;
 import br.unitins.model.MatrizCurricular;
 import br.unitins.model.Periodo;
 
@@ -98,6 +98,8 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public void setMatrizCurriculars(List<MatrizCurricular> matrizCurriculars) {
+		if (matrizCurriculars == null)
+			matrizCurriculars = new ArrayList<MatrizCurricular>();
 		this.matrizCurriculars = matrizCurriculars;
 	}
 
@@ -146,6 +148,8 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public void setPeriodos(List<Periodo> periodos) {
+		if (periodos == null)
+			periodos = new ArrayList<Periodo>();
 		this.periodos = periodos;
 	}
 	

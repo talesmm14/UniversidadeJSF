@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,18 +9,18 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import br.unitins.EJB.AlunoEJB;
-import br.unitins.model.Aluno;
+import br.unitins.EJB.DisciplinaEJB;
+import br.unitins.model.Disciplina;
 
 @Named
 @SessionScoped
 public class DisciplinaBean implements Serializable {
 	@EJB
-	private AlunoEJB disciplinaEJB;
+	private DisciplinaEJB disciplinaEJB;
 
-	private Aluno disciplina;
+	private Disciplina disciplina;
 
-	private List<Aluno> disciplinas;
+	private List<Disciplina> disciplinas;
 	private Boolean alterar = false;
 
 	@PostConstruct
@@ -33,11 +34,11 @@ public class DisciplinaBean implements Serializable {
 		return null;
 	}
 
-	public String alterar(Aluno aux) {
+	public String alterar(Disciplina aux) {
 		disciplina = aux;
 		alterar = true;
 		disciplinaEJB.update(disciplina);
-		return "cadastroAluno.xhtml?faces-redirect=true";
+		return "cadastroDisciplina.xhtml?faces-redirect=true";
 	}
 
 	public String voltar() {
@@ -46,38 +47,40 @@ public class DisciplinaBean implements Serializable {
 		return "disciplina.xhtml?faces-redirect=true";
 	}
 
-	public String apagar(Aluno aux) {
+	public String apagar(Disciplina aux) {
 		disciplina = aux;
 		disciplinaEJB.delete(disciplina);
 		return null;
 	}
 
 	public String novo() {
-		disciplina = new Aluno();
+		disciplina = new Disciplina();
 		return null;
 	}
 
-	public AlunoEJB getDisciplinaEJB() {
+	public DisciplinaEJB getDisciplinaEJB() {
 		return disciplinaEJB;
 	}
 
-	public void setDisciplinaEJB(AlunoEJB disciplinaEJB) {
+	public void setDisciplinaEJB(DisciplinaEJB disciplinaEJB) {
 		this.disciplinaEJB = disciplinaEJB;
 	}
 
-	public Aluno getDisciplina() {
+	public Disciplina getDisciplina() {
 		return disciplina;
 	}
 
-	public void setDisciplina(Aluno disciplina) {
+	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
 
-	public List<Aluno> getDisciplinas() {
+	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Aluno> disciplinas) {
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		if (disciplinas == null) 
+			disciplinas = new ArrayList<Disciplina>();
 		this.disciplinas = disciplinas;
 	}
 

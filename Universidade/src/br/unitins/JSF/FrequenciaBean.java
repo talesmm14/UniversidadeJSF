@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -86,6 +87,9 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public void setFrequencias(List<Frequencia> frequencias) {
+		if (frequencias == null) {
+			frequencias = new ArrayList<Frequencia>();
+		}
 		this.frequencias = frequencias;
 	}
 

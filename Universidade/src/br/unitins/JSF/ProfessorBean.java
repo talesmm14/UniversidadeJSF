@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -78,6 +79,8 @@ public class ProfessorBean implements Serializable {
 	}
 
 	public void setProfessors(List<Professor> professors) {
+		if (professors == null)
+			professors = new ArrayList<Professor>();
 		this.professors = professors;
 	}
 

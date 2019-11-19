@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -93,6 +94,8 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public void setMatriculas(List<Matricula> matriculas) {
+		if (matriculas == null)
+			matriculas = new ArrayList<Matricula>();
 		this.matriculas = matriculas;
 	}
 

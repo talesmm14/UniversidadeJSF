@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -85,6 +86,8 @@ public class CursoBean implements Serializable{
 	}
 
 	public void setCursos(List<Curso> cursos) {
+		if (cursos == null)
+			cursos = new ArrayList<Curso>();
 		this.cursos = cursos;
 	}
 

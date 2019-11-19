@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -100,6 +101,8 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public void setDisciplinaOfertadas(List<DisciplinaOfertada> disciplinaOfertadas) {
+		if (disciplinaOfertadas == null)
+			disciplinaOfertadas = new ArrayList<DisciplinaOfertada>();
 		this.disciplinaOfertadas = disciplinaOfertadas;
 	}
 

@@ -1,6 +1,7 @@
 package br.unitins.JSF;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -86,6 +87,8 @@ public class NotaBean implements Serializable {
 	}
 
 	public void setNotas(List<Nota> notas) {
+		if (notas == null)
+			notas = new ArrayList<Nota>();
 		this.notas = notas;
 	}
 
