@@ -36,6 +36,7 @@ public class SemestreBean implements Serializable {
 	public String alterar(Semestre aux) {
 		semestre = aux;
 		alterar = true;
+		semestreEJB.update(semestre);
 		return "cadastroSemestre.xhtml?faces-redirect=true";
 	}
 

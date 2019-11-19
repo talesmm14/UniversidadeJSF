@@ -8,16 +8,32 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.unitins.EJB.DisciplinaEJB;
 import br.unitins.EJB.DisciplinaOfertadaEJB;
+import br.unitins.EJB.ProfessorEJB;
+import br.unitins.EJB.SemestreEJB;
+import br.unitins.model.Disciplina;
 import br.unitins.model.DisciplinaOfertada;
+import br.unitins.model.Professor;
+import br.unitins.model.Semestre;
 
 @Named
 @SessionScoped
 public class DisciplinaOfertadaBean implements Serializable {
 	@EJB
 	private DisciplinaOfertadaEJB disciplinaOfertadaEJB;
+	private SemestreEJB semestreEJB;
+	private DisciplinaEJB disciplinaEJB;
+	private ProfessorEJB professorEJB;
 
 	private DisciplinaOfertada disciplinaOfertada;
+	
+	private Semestre semestre;
+	private Integer idSemestre;
+	private Disciplina disciplina;
+	private Integer idDisciplina;
+	private Professor professor;
+	private Integer idProfessor;
 
 	private List<DisciplinaOfertada> disciplinaOfertadas;
 	private Boolean alterar = false;
@@ -28,6 +44,12 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public String inserir() {
+		disciplina = disciplinaEJB.load(idDisciplina);
+		semestre = semestreEJB.load(idSemestre);
+		professor = professorEJB.load(idProfessor);
+		disciplinaOfertada.setDisciplina(disciplina);
+		disciplinaOfertada.setSemestre(semestre);
+		disciplinaOfertada.setProfessor(professor);
 		disciplinaOfertadaEJB.insert(disciplinaOfertada);
 		novo();
 		return null;
@@ -36,6 +58,7 @@ public class DisciplinaOfertadaBean implements Serializable {
 	public String alterar(DisciplinaOfertada aux) {
 		disciplinaOfertada = aux;
 		alterar = true;
+		disciplinaOfertadaEJB.update(disciplinaOfertada);
 		return "cadastroDisciplinaOfertada.xhtml?faces-redirect=true";
 	}
 
@@ -86,6 +109,78 @@ public class DisciplinaOfertadaBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public SemestreEJB getSemestreEJB() {
+		return semestreEJB;
+	}
+
+	public void setSemestreEJB(SemestreEJB semestreEJB) {
+		this.semestreEJB = semestreEJB;
+	}
+
+	public DisciplinaEJB getDisciplinaEJB() {
+		return disciplinaEJB;
+	}
+
+	public void setDisciplinaEJB(DisciplinaEJB disciplinaEJB) {
+		this.disciplinaEJB = disciplinaEJB;
+	}
+
+	public ProfessorEJB getProfessorEJB() {
+		return professorEJB;
+	}
+
+	public void setProfessorEJB(ProfessorEJB professorEJB) {
+		this.professorEJB = professorEJB;
+	}
+
+	public Semestre getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
+
+	public Integer getIdSemestre() {
+		return idSemestre;
+	}
+
+	public void setIdSemestre(Integer idSemestre) {
+		this.idSemestre = idSemestre;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Integer getIdDisciplina() {
+		return idDisciplina;
+	}
+
+	public void setIdDisciplina(Integer idDisciplina) {
+		this.idDisciplina = idDisciplina;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Integer getIdProfessor() {
+		return idProfessor;
+	}
+
+	public void setIdProfessor(Integer idProfessor) {
+		this.idProfessor = idProfessor;
 	}
 	
 }

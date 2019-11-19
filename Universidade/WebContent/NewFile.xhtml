@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form1">
+			<fieldset>
+				<LEGEND>Consultar</LEGEND>
+				<p:panelGrid columns="3">
+					<h:outputText value="ID:" />
+					<p:inputText value="#{instituicaoBean.idPesquisa}" />
+					<p:commandButton value="Search"
+						action="#{instituicaoBean.pesquisar}" update="form1" />
+
+				</p:panelGrid>
+			</fieldset>
+			<br />
+			<fieldset>
+				<LEGEND>Cadastrar Instituicao</LEGEND>
+				<p:panelGrid columns="2">
+
+					<h:outputText value="ID:" />
+					<p:outputLabel value="#{instituicaoBean.instituicao.id}" />
+
+					<h:outputText value="Nome Instituicao:" />
+					<p:inputText value="#{instituicaoBean.instituicao.nome}" />
+				</p:panelGrid>
+
+				<br />
+				<p:commandButton value="Cadastrar"
+					action="#{instituicaoBean.insert}" update="form1,data1" />
+
+				<p:commandButton value="Alterar" action="#{instituicaoBean.update}"
+					update="form1,data1" />
+
+				<p:commandButton value="Apagar" action="#{instituicaoBean.delete}"
+					update="form1,data1" />
+
+				<p:commandButton value="Limpar" action="#{instituicaoBean.limpar}"
+					update="form1" />
+				<p:messages />
+			</fieldset>
+		</h:form>
+
+		<br />
+
+		<fieldset>
+			<LEGEND>Listar Instituicaos</LEGEND>
+			<p:dataTable id="data1" var="u"
+				value="#{instituicaoBean.listaInstituicao}">
+				<p:column headerText="ID">
+					<h:outputText value="#{u.id}" />
+				</p:column>
+
+				<p:column headerText="Nome Instituicao">
+					<h:outputText value="#{u.nome}" />
+				</p:column>
+			</p:dataTable>
+		</fieldset>
+	</ui:define>
+</ui:composition>
+</html>

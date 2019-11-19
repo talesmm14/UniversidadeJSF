@@ -36,6 +36,7 @@ public class ProfessorBean implements Serializable {
 	public String alterar(Professor aux) {
 		professor = aux;
 		alterar = true;
+		professorEJB.update(professor);
 		return "cadastroProfessor.xhtml?faces-redirect=true";
 	}
 

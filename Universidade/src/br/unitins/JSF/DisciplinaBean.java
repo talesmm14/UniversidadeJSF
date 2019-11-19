@@ -36,6 +36,7 @@ public class DisciplinaBean implements Serializable {
 	public String alterar(Aluno aux) {
 		disciplina = aux;
 		alterar = true;
+		disciplinaEJB.update(disciplina);
 		return "cadastroAluno.xhtml?faces-redirect=true";
 	}
 

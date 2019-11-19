@@ -8,7 +8,11 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.unitins.EJB.AlunoEJB;
+import br.unitins.EJB.DisciplinaOfertadaEJB;
 import br.unitins.EJB.MatriculaEJB;
+import br.unitins.model.Aluno;
+import br.unitins.model.DisciplinaOfertada;
 import br.unitins.model.Matricula;
 
 @Named
@@ -16,8 +20,15 @@ import br.unitins.model.Matricula;
 public class MatriculaBean implements Serializable {
 	@EJB
 	private MatriculaEJB matriculaEJB;
+	private AlunoEJB alunoEJB;
+	private DisciplinaOfertadaEJB disciplinaOfertadaEJB;
 
 	private Matricula matricula;
+	
+	private Aluno aluno;
+	private Integer idAluno;
+	private DisciplinaOfertada disciplinaOfertada;
+	private Integer idDisciplinaOfertada;
 
 	private List<Matricula> matriculas;
 	private Boolean alterar = false;
@@ -28,6 +39,10 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public String inserir() {
+		aluno = alunoEJB.load(idAluno);
+		disciplinaOfertada = disciplinaOfertadaEJB.load(idDisciplinaOfertada);
+		matricula.setAluno(aluno);
+		matricula.setDisciplina(disciplinaOfertada);
 		matriculaEJB.insert(matricula);
 		novo();
 		return null;
@@ -35,6 +50,7 @@ public class MatriculaBean implements Serializable {
 
 	public String alterar(Matricula aux) {
 		matricula = aux;
+		matriculaEJB.update(matricula);
 		alterar = true;
 		return "cadastroMatricula.xhtml?faces-redirect=true";
 	}
@@ -86,6 +102,38 @@ public class MatriculaBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Integer getIdAluno() {
+		return idAluno;
+	}
+
+	public void setIdAluno(Integer idAluno) {
+		this.idAluno = idAluno;
+	}
+
+	public DisciplinaOfertada getDisciplinaOfertada() {
+		return disciplinaOfertada;
+	}
+
+	public void setDisciplinaOfertada(DisciplinaOfertada disciplinaOfertada) {
+		this.disciplinaOfertada = disciplinaOfertada;
+	}
+
+	public Integer getIdDisciplinaOfertada() {
+		return idDisciplinaOfertada;
+	}
+
+	public void setIdDisciplinaOfertada(Integer idDisciplinaOfertada) {
+		this.idDisciplinaOfertada = idDisciplinaOfertada;
 	}
 	
 }

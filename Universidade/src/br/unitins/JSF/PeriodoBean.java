@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.unitins.EJB.DisciplinaEJB;
 import br.unitins.EJB.PeriodoEJB;
+import br.unitins.model.Disciplina;
 import br.unitins.model.Periodo;
 
 @Named
@@ -16,9 +18,12 @@ import br.unitins.model.Periodo;
 public class PeriodoBean implements Serializable {
 	@EJB
 	private PeriodoEJB periodoEJB;
+	private DisciplinaEJB disciplinaEJB;
 
 	private Periodo periodo;
-
+	
+	private List<Disciplina> disciplinas;
+	
 	private List<Periodo> Periodos;
 	private Boolean alterar = false;
 
@@ -28,6 +33,7 @@ public class PeriodoBean implements Serializable {
 	}
 
 	public String inserir() {
+		periodo.setDisciplinas(disciplinas);
 		periodoEJB.insert(periodo);
 		novo();
 		return null;
@@ -36,7 +42,14 @@ public class PeriodoBean implements Serializable {
 	public String alterar(Periodo aux) {
 		periodo = aux;
 		alterar = true;
+		periodoEJB.update(periodo);
 		return "cadastroPeriodo.xhtml?faces-redirect=true";
+	}
+	
+	public String cadastrarDisciplinas(Disciplina aux) {
+		disciplinas.add(disciplinaEJB.load(aux.getId()));
+		System.out.println("add : " + disciplinas);
+		return null;
 	}
 
 	public String voltar() {

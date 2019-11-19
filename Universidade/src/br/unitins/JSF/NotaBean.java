@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.unitins.EJB.MatriculaEJB;
 import br.unitins.EJB.NotaEJB;
+import br.unitins.model.Matricula;
 import br.unitins.model.Nota;
 
 @Named
@@ -16,8 +18,12 @@ import br.unitins.model.Nota;
 public class NotaBean implements Serializable {
 	@EJB
 	private NotaEJB notaEJB;
+	private MatriculaEJB matriculaEJB;
 
 	private Nota nota;
+	
+	private Matricula matricula;
+	private Integer idMatricula;
 
 	private List<Nota> notas;
 	private Boolean alterar = false;
@@ -28,6 +34,8 @@ public class NotaBean implements Serializable {
 	}
 
 	public String inserir() {
+		matricula = matriculaEJB.load(idMatricula);
+		nota.setMatricula(matricula);
 		notaEJB.insert(nota);
 		novo();
 		return null;
@@ -36,6 +44,7 @@ public class NotaBean implements Serializable {
 	public String alterar(Nota aux) {
 		nota = aux;
 		alterar = true;
+		notaEJB.update(nota);
 		return "cadastroNota.xhtml?faces-redirect=true";
 	}
 

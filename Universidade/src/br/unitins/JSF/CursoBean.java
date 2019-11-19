@@ -9,25 +9,33 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.unitins.EJB.CursoEJB;
+import br.unitins.EJB.InstituicaoEJB;
 import br.unitins.model.Curso;
+import br.unitins.model.Instituicao;
 
 @Named
 @SessionScoped
 public class CursoBean implements Serializable{
 	@EJB
 	private CursoEJB cursoEJB;
+	private InstituicaoEJB instituicaoEJB;
 
 	private Curso curso;
+	
+	private Instituicao instituicao;
+	private Integer idInstituicao;
 
 	private List<Curso> cursos;
 	private Boolean alterar = false;
-
+	
 	@PostConstruct
 	public void init() {
 		cursos = cursoEJB.findAll();
 	}
 
 	public String inserir() {
+		instituicao = instituicaoEJB.load(idInstituicao);
+		curso.setInstituicao(instituicao);
 		cursoEJB.insert(curso);
 		novo();
 		return null;

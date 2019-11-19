@@ -36,6 +36,7 @@ public class InstituicaoBean implements Serializable {
 	public String alterar(Instituicao aux) {
 		instituicao = aux;
 		alterar = true;
+		instituicaoEJB.update(instituicao);
 		return "cadastroInstituicao.xhtml?faces-redirect=true";
 	}
 

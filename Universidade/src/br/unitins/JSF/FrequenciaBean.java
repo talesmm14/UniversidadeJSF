@@ -9,16 +9,22 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.unitins.EJB.FrequenciaEJB;
+import br.unitins.EJB.MatriculaEJB;
 import br.unitins.model.Frequencia;
+import br.unitins.model.Matricula;
 
 @Named
 @SessionScoped
 public class FrequenciaBean implements Serializable {
 	@EJB
 	private FrequenciaEJB frequenciaEJB;
-
+	private MatriculaEJB matriculaEJB;
+	
 	private Frequencia frequencia;
-
+	
+	private Matricula matricula;
+	private Integer idMatricula;
+	
 	private List<Frequencia> frequencias;
 	private Boolean alterar = false;
 
@@ -28,6 +34,8 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public String inserir() {
+		matricula = matriculaEJB.load(idMatricula);
+		frequencia.setMatricula(matricula);
 		frequenciaEJB.insert(frequencia);
 		novo();
 		return null;
@@ -36,6 +44,7 @@ public class FrequenciaBean implements Serializable {
 	public String alterar(Frequencia aux) {
 		frequencia = aux;
 		alterar = true;
+		frequenciaEJB.update(frequencia);
 		return "cadastroFrequencia.xhtml?faces-redirect=true";
 	}
 

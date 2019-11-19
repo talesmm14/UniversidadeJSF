@@ -8,16 +8,27 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.unitins.EJB.CursoEJB;
 import br.unitins.EJB.MatrizCurricularEJB;
+import br.unitins.EJB.PeriodoEJB;
+import br.unitins.model.Curso;
+import br.unitins.model.Disciplina;
 import br.unitins.model.MatrizCurricular;
+import br.unitins.model.Periodo;
 
 @Named
 @SessionScoped
 public class MatrizCurricularBean implements Serializable {
 	@EJB
 	private MatrizCurricularEJB matrizCurricularEJB;
-
+	private CursoEJB cursoEJB;
+	private PeriodoEJB periodoEJB;
+	
 	private MatrizCurricular matrizCurricular;
+	
+	private Curso curso;
+	private Integer idCurso;
+	private List<Periodo> periodos;
 
 	private List<MatrizCurricular> matrizCurriculars;
 	private Boolean alterar = false;
@@ -28,6 +39,9 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public String inserir() {
+		curso = cursoEJB.load(idCurso);
+		matrizCurricular.setCurso(curso);
+		matrizCurricular.setPeriodos(periodos);
 		matrizCurricularEJB.insert(matrizCurricular);
 		novo();
 		return null;
@@ -36,7 +50,14 @@ public class MatrizCurricularBean implements Serializable {
 	public String alterar(MatrizCurricular aux) {
 		matrizCurricular = aux;
 		alterar = true;
+		matrizCurricularEJB.update(matrizCurricular);
 		return "cadastroMatrizCurricular.xhtml?faces-redirect=true";
+	}
+	
+	public String cadastrarPeriodos(Periodo aux) {
+		periodos.add(periodoEJB.load(aux.getId()));
+		System.out.println("add : " + periodos);
+		return null;
 	}
 
 	public String voltar() {
@@ -86,6 +107,46 @@ public class MatrizCurricularBean implements Serializable {
 
 	public void setAlterar(Boolean alterar) {
 		this.alterar = alterar;
+	}
+
+	public CursoEJB getCursoEJB() {
+		return cursoEJB;
+	}
+
+	public void setCursoEJB(CursoEJB cursoEJB) {
+		this.cursoEJB = cursoEJB;
+	}
+
+	public PeriodoEJB getPeriodoEJB() {
+		return periodoEJB;
+	}
+
+	public void setPeriodoEJB(PeriodoEJB periodoEJB) {
+		this.periodoEJB = periodoEJB;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public Integer getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(Integer idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public List<Periodo> getPeriodos() {
+		return periodos;
+	}
+
+	public void setPeriodos(List<Periodo> periodos) {
+		this.periodos = periodos;
 	}
 	
 }
