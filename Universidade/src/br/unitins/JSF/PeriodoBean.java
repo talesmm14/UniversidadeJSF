@@ -79,6 +79,8 @@ public class PeriodoBean implements Serializable {
 	}
 
 	public Periodo getPeriodo() {
+		if(periodo == null)
+			periodo = new Periodo();
 		return periodo;
 	}
 
@@ -88,7 +90,8 @@ public class PeriodoBean implements Serializable {
 
 	public List<Periodo> getPeriodos() {
 		if (periodos == null)
-			periodos = new ArrayList<Periodo>();
+			periodos = new ArrayList<>();
+		periodos = periodoEJB.findAll();
 		return periodos;
 	}
 
@@ -114,7 +117,8 @@ public class PeriodoBean implements Serializable {
 
 	public List<Disciplina> getDisciplinas() {
 		if (disciplinas == null)
-			disciplinas = new ArrayList<Disciplina>();
+			disciplinas = new ArrayList<>();
+		disciplinas = disciplinaEJB.findAll();
 		return disciplinas;
 	}
 

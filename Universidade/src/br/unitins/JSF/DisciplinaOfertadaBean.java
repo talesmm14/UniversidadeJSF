@@ -98,7 +98,8 @@ public class DisciplinaOfertadaBean implements Serializable {
 
 	public List<DisciplinaOfertada> getDisciplinaOfertadas() {
 		if (disciplinaOfertadas == null)
-			disciplinaOfertadas = new ArrayList<DisciplinaOfertada>();
+			disciplinaOfertadas = new ArrayList<>();
+		disciplinaOfertadas = disciplinaOfertadaEJB.findAll();
 		return disciplinaOfertadas;
 	}
 
@@ -139,6 +140,8 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public Semestre getSemestre() {
+		if(semestre == null)
+			semestre = new Semestre();
 		return semestre;
 	}
 
@@ -155,6 +158,8 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public Disciplina getDisciplina() {
+		if(disciplina == null)
+			disciplina = new Disciplina();
 		return disciplina;
 	}
 
@@ -171,6 +176,8 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public Professor getProfessor() {
+		if(professor == null)
+			professor = new Professor();
 		return professor;
 	}
 

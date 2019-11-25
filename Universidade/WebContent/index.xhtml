@@ -6,10 +6,39 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Univeridade unipotaria</title>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="template.css" />
+	<title>Universidade Unipotaria</title>
 </h:head>
 <h:body>
-	teste
+	<ui:insert name="menu">
+		<section id="sidebar">
+		<div id="sidebar-nav">
+			<ul>
+				<li ><a href="index.xhtml"> UniPotaria</a></li>
+				<li><a href="#"> Website</a></li>
+				<li><a href="curso.xhtml"> Cursos</a></li>
+				<li><a href="professor.xhtml"> Professores</a></li>
+				<li><a href="aluno.xhtml"> Alunos</a></li>
+				<li><a href="disciplina.xhtml">Disciplinas</a></li>
+			</ul>
+		</div>
+		</section>
+		<section id="content">
+		<div id="header"></div>
+		<div class="content">
+			<div class="content-header">
+				<h1>UniPotaria</h1>
+				<p>A universidade mais animada do brasil.</p>
+			</div>
+			<ui:insert name="conteudo">
+
+			</ui:insert>
+		</div>
+		</section>
+
+	</ui:insert>
 </h:body>
 </html>

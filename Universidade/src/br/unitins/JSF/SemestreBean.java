@@ -67,6 +67,8 @@ public class SemestreBean implements Serializable {
 	}
 
 	public Semestre getSemestre() {
+		if(semestre == null)
+			semestre = new Semestre();
 		return semestre;
 	}
 
@@ -76,7 +78,8 @@ public class SemestreBean implements Serializable {
 
 	public List<Semestre> getSemestres() {
 		if (semestres == null)
-			semestres = new ArrayList<Semestre>();
+			semestres = new ArrayList<>();
+		semestres = semestreEJB.findAll();
 		return semestres;
 	}
 

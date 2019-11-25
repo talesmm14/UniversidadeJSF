@@ -75,6 +75,8 @@ public class NotaBean implements Serializable {
 	}
 
 	public Nota getNota() {
+		if(nota == null)
+			nota = new Nota();
 		return nota;
 	}
 
@@ -84,7 +86,8 @@ public class NotaBean implements Serializable {
 
 	public List<Nota> getNotas() {
 		if (notas == null)
-			notas = new ArrayList<Nota>();
+			notas = new ArrayList<>();
+		notas = notaEJB.findAll();
 		return notas;
 	}
 
@@ -109,6 +112,8 @@ public class NotaBean implements Serializable {
 	}
 
 	public Matricula getMatricula() {
+		if(matricula == null)
+			matricula = new Matricula();
 		return matricula;
 	}
 

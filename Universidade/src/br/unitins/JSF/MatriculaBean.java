@@ -82,6 +82,8 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public Matricula getMatricula() {
+		if(matricula == null)
+			matricula = new Matricula();
 		return matricula;
 	}
 
@@ -91,7 +93,8 @@ public class MatriculaBean implements Serializable {
 
 	public List<Matricula> getMatriculas() {
 		if (matriculas == null)
-			matriculas = new ArrayList<Matricula>();
+			matriculas = new ArrayList<>();
+		matriculas = matriculaEJB.findAll();
 		return matriculas;
 	}
 
@@ -108,6 +111,8 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public Aluno getAluno() {
+		if(aluno == null)
+			aluno = new Aluno();
 		return aluno;
 	}
 
@@ -124,6 +129,8 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public DisciplinaOfertada getDisciplinaOfertada() {
+		if(disciplinaOfertada == null)
+			disciplinaOfertada = new DisciplinaOfertada();
 		return disciplinaOfertada;
 	}
 

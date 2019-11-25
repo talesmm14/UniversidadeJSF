@@ -74,6 +74,8 @@ public class CursoBean implements Serializable{
 	}
 
 	public Curso getCurso() {
+		if(curso == null)
+			curso = new Curso();
 		return curso;
 	}
 
@@ -83,7 +85,8 @@ public class CursoBean implements Serializable{
 
 	public List<Curso> getCursos() {
 		if (cursos == null)
-			cursos = new ArrayList<Curso>();
+			cursos = new ArrayList<>();
+		cursos = cursoEJB.findAll();
 		return cursos;
 	}
 

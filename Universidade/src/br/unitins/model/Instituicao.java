@@ -17,6 +17,11 @@ public class Instituicao implements Serializable{
 	@GeneratedValue
 	private Integer id;
 	
+	public Instituicao() {
+		this.id = 1;
+		this.nome = "UniPotaria";
+	}
+
 	@NotEmpty
 	private String nome;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<p:layoutUnit position="center">
+			
+			<h:form >
+			<p:commandButton value="Cadastrar novo aluno" action="cadastroAluno?faces-redirect=true" update="form"/>
+				<h3>Alunos</h3>
+				<p:accordionPanel value="#{alunoBean.alunos}" var="aluno" id="form">
+					<p:tab title="#{aluno.nome}" >
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{aluno.id}" />
+							<h:outputText value="Valor:" style="font-weight: bold" />
+							<h:outputText value="#{aluno.ra}" />
+							<p:commandButton value="Deletar" action="#{alunoBean.apagar(aluno)}" update="form"/>
+							<p:commandButton value="Alterar" action="#{alunoBean.alterar(aluno)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+
+		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
+</html>

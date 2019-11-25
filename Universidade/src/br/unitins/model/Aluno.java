@@ -21,7 +21,6 @@ public class Aluno implements Serializable{
 	@NotEmpty
 	private String nome;
 	
-	@NotEmpty
 	private Integer ra;
 
 	public Integer getId() {

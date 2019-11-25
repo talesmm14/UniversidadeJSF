@@ -3,6 +3,7 @@ package br.unitins.JSF;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -19,7 +20,9 @@ public class AlunoBean implements Serializable {
 	private AlunoEJB alunoEJB;
 
 	private Aluno aluno;
-
+	
+	Random geradorRA = new Random();
+	
 	private List<Aluno> alunos;
 	private Boolean alterar = false;
 
@@ -29,6 +32,7 @@ public class AlunoBean implements Serializable {
 	}
 
 	public String inserir() {
+		aluno.setRa(geradorRA.nextInt(10000));
 		alunoEJB.insert(aluno);
 		novo();
 		return null;
@@ -66,6 +70,8 @@ public class AlunoBean implements Serializable {
 	}
 
 	public Aluno getAluno() {
+		if(aluno == null)
+			aluno = new Aluno();
 		return aluno;
 	}
 
@@ -75,12 +81,9 @@ public class AlunoBean implements Serializable {
 
 	public List<Aluno> getAlunos() {
 		if (alunos == null)
-			alunos = new ArrayList<Aluno>();
+			alunos = new ArrayList<>();
+		alunos = alunoEJB.findAll();
 		return alunos;
-	}
-
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
 	}
 
 	public Boolean getAlterar() {

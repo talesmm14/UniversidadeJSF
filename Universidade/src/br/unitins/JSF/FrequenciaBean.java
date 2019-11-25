@@ -75,6 +75,8 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public Frequencia getFrequencia() {
+		if(frequencia == null)
+			frequencia = new Frequencia();
 		return frequencia;
 	}
 
@@ -83,9 +85,9 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public List<Frequencia> getFrequencias() {
-		if (frequencias == null) {
-			frequencias = new ArrayList<Frequencia>();
-		}
+		if (frequencias == null) 
+			frequencias = new ArrayList<>();
+		frequencias = frequenciaEJB.findAll();
 		return frequencias;
 	}
 
@@ -110,6 +112,8 @@ public class FrequenciaBean implements Serializable {
 	}
 
 	public Matricula getMatricula() {
+		if(matricula == null)
+			matricula = new Matricula();
 		return matricula;
 	}
 

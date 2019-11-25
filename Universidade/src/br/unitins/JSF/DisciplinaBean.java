@@ -67,6 +67,8 @@ public class DisciplinaBean implements Serializable {
 	}
 
 	public Disciplina getDisciplina() {
+		if(disciplina == null)
+			disciplina = new Disciplina();
 		return disciplina;
 	}
 
@@ -76,7 +78,8 @@ public class DisciplinaBean implements Serializable {
 
 	public List<Disciplina> getDisciplinas() {
 		if (disciplinas == null) 
-			disciplinas = new ArrayList<Disciplina>();
+			disciplinas = new ArrayList<>();
+		disciplinas = disciplinaEJB.findAll();
 		return disciplinas;
 	}
 

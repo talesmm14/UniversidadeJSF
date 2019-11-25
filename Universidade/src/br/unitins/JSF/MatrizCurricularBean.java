@@ -86,6 +86,8 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public MatrizCurricular getMatrizCurricular() {
+		if(matrizCurricular == null)
+			matrizCurricular = new MatrizCurricular();
 		return matrizCurricular;
 	}
 
@@ -95,7 +97,8 @@ public class MatrizCurricularBean implements Serializable {
 
 	public List<MatrizCurricular> getMatrizCurriculars() {
 		if (matrizCurriculars == null)
-			matrizCurriculars = new ArrayList<MatrizCurricular>();
+			matrizCurriculars = new ArrayList<>();
+		matrizCurriculars = matrizCurricularEJB.findAll();
 		return matrizCurriculars;
 	}
 
@@ -128,6 +131,8 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public Curso getCurso() {
+		if(curso == null)
+			curso = new Curso();
 		return curso;
 	}
 
@@ -144,12 +149,13 @@ public class MatrizCurricularBean implements Serializable {
 	}
 
 	public List<Periodo> getPeriodos() {
+		if(periodos == null)
+			periodos = new ArrayList<>();
+		periodos = periodoEJB.findAll();
 		return periodos;
 	}
 
 	public void setPeriodos(List<Periodo> periodos) {
-		if (periodos == null)
-			periodos = new ArrayList<Periodo>();
 		this.periodos = periodos;
 	}
 	

@@ -67,6 +67,8 @@ public class ProfessorBean implements Serializable {
 	}
 
 	public Professor getProfessor() {
+		if(professor == null)
+			professor = new Professor();
 		return professor;
 	}
 
@@ -76,7 +78,8 @@ public class ProfessorBean implements Serializable {
 
 	public List<Professor> getProfessors() {
 		if (professors == null)
-			professors = new ArrayList<Professor>();
+			professors = new ArrayList<>();
+		professors = professorEJB.findAll();
 		return professors;
 	}
 
