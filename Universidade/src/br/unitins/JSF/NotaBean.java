@@ -19,6 +19,7 @@ import br.unitins.model.Nota;
 public class NotaBean implements Serializable {
 	@EJB
 	private NotaEJB notaEJB;
+	@EJB
 	private MatriculaEJB matriculaEJB;
 
 	private Nota nota;

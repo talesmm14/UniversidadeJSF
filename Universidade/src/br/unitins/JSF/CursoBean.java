@@ -19,6 +19,7 @@ import br.unitins.model.Instituicao;
 public class CursoBean implements Serializable{
 	@EJB
 	private CursoEJB cursoEJB;
+	@EJB
 	private InstituicaoEJB instituicaoEJB;
 
 	private Curso curso;
@@ -35,8 +36,8 @@ public class CursoBean implements Serializable{
 	}
 
 	public String inserir() {
-		instituicao = instituicaoEJB.load(idInstituicao);
-		curso.setInstituicao(instituicao);
+		System.out.println(idInstituicao);
+		curso.setInstituicao(instituicaoEJB.load(idInstituicao));
 		cursoEJB.insert(curso);
 		novo();
 		return null;
@@ -102,15 +103,9 @@ public class CursoBean implements Serializable{
 		this.alterar = alterar;
 	}
 
-	public InstituicaoEJB getInstituicaoEJB() {
-		return instituicaoEJB;
-	}
-
-	public void setInstituicaoEJB(InstituicaoEJB instituicaoEJB) {
-		this.instituicaoEJB = instituicaoEJB;
-	}
-
 	public Instituicao getInstituicao() {
+		if(instituicao == null)
+			instituicao = new Instituicao();
 		return instituicao;
 	}
 

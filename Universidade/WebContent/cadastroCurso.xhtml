@@ -15,9 +15,9 @@
 
 				<p:outputLabel for="curso_instituicao" value="Faculdade:" />
 				<p:selectOneMenu id="curso_instituicao"
-					value="#{cursoBean.instituicao.id}" style="width:125px">
+					value="#{cursoBean.idInstituicao}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{cursoBean.instituicao}" var="inst"
+					<f:selectItems value="#{instituicaoBean.instituicoes}" var="inst"
 						itemLabel="#{inst.nome}" itemValue="#{inst.id}" />
 				</p:selectOneMenu>
 

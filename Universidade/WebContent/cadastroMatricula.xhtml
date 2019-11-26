@@ -13,17 +13,17 @@
 			<h:panelGrid columns="2" cellpadding="10">
 				<p:outputLabel for="matricula_aluno" value="Aluno:" />
 				<p:selectOneMenu id="matricula_aluno"
-					value="#{matriculaBean.aluno.id}" style="width:125px">
+					value="#{matriculaBean.idAluno}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{matriculaBean.aluno}" var="aluno"
+					<f:selectItems value="#{alunoBean.alunos}" var="aluno"
 						itemLabel="#{aluno.nome}" itemValue="#{aluno.id}" />
 				</p:selectOneMenu>
 				
 				<p:outputLabel for="matricula_disciplina" value="Disciplina:" />
 				<p:selectOneMenu id="matricula_disciplina"
-					value="#{matriculaBean.disciplinaOfertada.id}" style="width:125px">
+					value="#{matriculaBean.idDisciplinaOfertada}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{matriculaBean.disciplinaOfertada}" var="aux"
+					<f:selectItems value="#{disciplinaOfertadaBean.disciplinaOfertadas}" var="aux"
 						itemLabel="#{aux.disciplina.nome}" itemValue="#{aux.id}" />
 				</p:selectOneMenu>
 

@@ -21,11 +21,11 @@
 				<h:outputText value="Hora Final: " />
 				<p:inputText value="#{frequenciaBean.frequencia.horafinal}" />
 
-				<p:outputLabel for="frequencia_matricula" value="Faculdade:" />
+				<p:outputLabel for="frequencia_matricula" value="Matricula: " />
 				<p:selectOneMenu id="frequencia_matricula"
-					value="#{frequenciaBean.matricula.id}" style="width:125px">
+					value="#{frequenciaBean.idMatricula}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{frequenciaBean.matricula}" var="inst"
+					<f:selectItems value="#{matriculaBean.matriculas}" var="inst"
 						itemLabel="#{inst.aluno.nome}" itemValue="#{inst.id}" />
 				</p:selectOneMenu>
 

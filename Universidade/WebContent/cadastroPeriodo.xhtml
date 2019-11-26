@@ -13,28 +13,36 @@
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<h:outputText value="Nome: " />
-				<p:inputText 
-					value="#{periodoBean.periodo.nome}" />
-				
+				<p:inputText value="#{periodoBean.periodo.nome}" />
+
 				<p:outputPanel>
-							<p:dataList value="#{periodoBean.periodos}" var="aux"
-								semptyMessage="Sem disciplinas cadastradas">
-								<p:column>
-								<f:facet name="header">
-										<h:outputText value="Disciplina" />
-									</f:facet>
-									<h:outputText value="#{aux.nome}" />
-								</p:column>
-								<p:column>&nbsp;&nbsp;&nbsp;&nbsp;</p:column>
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="Ação" />
-									</f:facet>
-									<p:commandButton value="+"
-										action="#{periodoBean.cadastrarDisciplinas(aux)}" update="form3" />
-								</p:column>
-							</p:dataList>
-						</p:outputPanel>
+					<p:dataList value="#{periodoBean.disciplinas}" var="aux"
+						semptyMessage="Sem disciplinas cadastradas">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Disciplina" />
+							</f:facet>
+							<h:outputText value="#{aux.nome}" />
+						</p:column>
+						<p:column>&nbsp;&nbsp;&nbsp;&nbsp;</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Ação" />
+							</f:facet>
+							<p:commandButton value="+"
+								action="#{periodoBean.cadastrarDisciplinas(aux)}" update="form2" />
+						</p:column>
+					</p:dataList>
+				</p:outputPanel>
+				<br />
+
+				<p:dataList value="#{periodoBean.periodo.disciplinas}" var="aux"
+					type="ordered" emptyMessage="Sem disciplinas">
+					<f:facet name="header">Lista de disciplinas</f:facet>
+        						#{aux.nome}
+    					</p:dataList>
+				<br />
+
 
 				<h:panelGroup rendered="#{periodoBean.alterar == false}">
 					<p:commandButton value="Cadastrar"
@@ -44,8 +52,8 @@
 				</h:panelGroup>
 
 				<h:panelGroup rendered="#{periodoBean.alterar}">
-					<p:commandButton value="Alterar"
-						action="#{periodoBean.voltar()}" update="form2" />
+					<p:commandButton value="Alterar" action="#{periodoBean.voltar()}"
+						update="form2" />
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:form>

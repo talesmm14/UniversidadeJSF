@@ -21,7 +21,9 @@ import br.unitins.model.Periodo;
 public class MatrizCurricularBean implements Serializable {
 	@EJB
 	private MatrizCurricularEJB matrizCurricularEJB;
+	@EJB
 	private CursoEJB cursoEJB;
+	@EJB
 	private PeriodoEJB periodoEJB;
 	
 	private MatrizCurricular matrizCurricular;

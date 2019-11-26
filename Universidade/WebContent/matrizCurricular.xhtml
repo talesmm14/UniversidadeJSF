@@ -24,10 +24,10 @@
 							<h:outputText value="#{matriz.ch}" />
 							<h:outputText value="Curso:" style="font-weight: bold" />
 							<h:outputText value="#{matriz.curso}" />
-							<p:dataList value="#{matriz.periodos}" var="periodo"
+							<p:dataList value="#{matriz.periodos}" var="aux"
 								type="ordered" emptyMessage="Sem periodos">
 								<f:facet name="header">Lista de periodos</f:facet>
-        						#{periodo.nome}
+        						#{aux.nome}
     						</p:dataList>
 							<p:commandButton value="Deletar" action="#{matrizCurricularBean.apagar(matriz)}" update="form"/>
 							<p:commandButton value="Alterar" action="#{matrizCurricularBean.alterar(matriz)}" />

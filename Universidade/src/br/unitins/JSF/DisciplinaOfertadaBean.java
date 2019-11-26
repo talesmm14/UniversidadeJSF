@@ -23,8 +23,11 @@ import br.unitins.model.Semestre;
 public class DisciplinaOfertadaBean implements Serializable {
 	@EJB
 	private DisciplinaOfertadaEJB disciplinaOfertadaEJB;
+	@EJB
 	private SemestreEJB semestreEJB;
+	@EJB
 	private DisciplinaEJB disciplinaEJB;
+	@EJB
 	private ProfessorEJB professorEJB;
 
 	private DisciplinaOfertada disciplinaOfertada;
@@ -45,12 +48,9 @@ public class DisciplinaOfertadaBean implements Serializable {
 	}
 
 	public String inserir() {
-		disciplina = disciplinaEJB.load(idDisciplina);
-		semestre = semestreEJB.load(idSemestre);
-		professor = professorEJB.load(idProfessor);
-		disciplinaOfertada.setDisciplina(disciplina);
-		disciplinaOfertada.setSemestre(semestre);
-		disciplinaOfertada.setProfessor(professor);
+		disciplinaOfertada.setDisciplina(disciplinaEJB.load(idDisciplina));
+		disciplinaOfertada.setSemestre(semestreEJB.load(idSemestre));
+		disciplinaOfertada.setProfessor(professorEJB.load(idProfessor));
 		disciplinaOfertadaEJB.insert(disciplinaOfertada);
 		novo();
 		return null;

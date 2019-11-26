@@ -21,7 +21,9 @@ import br.unitins.model.Matricula;
 public class MatriculaBean implements Serializable {
 	@EJB
 	private MatriculaEJB matriculaEJB;
+	@EJB
 	private AlunoEJB alunoEJB;
+	@EJB
 	private DisciplinaOfertadaEJB disciplinaOfertadaEJB;
 
 	private Matricula matricula;
@@ -40,10 +42,8 @@ public class MatriculaBean implements Serializable {
 	}
 
 	public String inserir() {
-		aluno = alunoEJB.load(idAluno);
-		disciplinaOfertada = disciplinaOfertadaEJB.load(idDisciplinaOfertada);
-		matricula.setAluno(aluno);
-		matricula.setDisciplina(disciplinaOfertada);
+		matricula.setAluno(alunoEJB.load(idAluno));
+		matricula.setDisciplina(disciplinaOfertadaEJB.load(idDisciplinaOfertada));
 		matriculaEJB.insert(matricula);
 		novo();
 		return null;

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -18,13 +19,13 @@ public class DisciplinaOfertada implements Serializable{
 	@GeneratedValue
 	private Integer id;
 	
-	@NotEmpty
+	@ManyToOne
 	private Semestre semestre;
 	
-	@NotEmpty
+	@ManyToOne
 	private Disciplina disciplina;
 	
-	@NotEmpty
+	@ManyToOne
 	private Professor professor;
 
 	public Integer getId() {

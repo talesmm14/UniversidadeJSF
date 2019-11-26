@@ -19,6 +19,7 @@ import br.unitins.model.Matricula;
 public class FrequenciaBean implements Serializable {
 	@EJB
 	private FrequenciaEJB frequenciaEJB;
+	@EJB
 	private MatriculaEJB matriculaEJB;
 	
 	private Frequencia frequencia;

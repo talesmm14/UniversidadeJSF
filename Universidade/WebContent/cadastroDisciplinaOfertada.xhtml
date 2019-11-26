@@ -14,26 +14,26 @@
 			
 			<p:outputLabel for="disciplinaOfertada_semestre" value="Semestre:" />
 				<p:selectOneMenu id="disciplinaOfertada_semestre"
-					value="#{disciplinaOfertadaBean.semestre.id}" style="width:125px">
+					value="#{disciplinaOfertadaBean.idSemestre}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{disciplinaOfertadaBean.semestre}" var="semestre"
+					<f:selectItems value="#{semestreBean.semestres}" var="semestre"
 						itemLabel="#{semestre.nome}" itemValue="#{semestre.id}" />
 				</p:selectOneMenu>
 				
 				<p:outputLabel for="disciplinaOfertada_disciplina" value="Disciplina:" />
 				<p:selectOneMenu id="disciplinaOfertada_disciplina"
-					value="#{disciplinaOfertadaBean.disciplina.id}" style="width:125px">
+					value="#{disciplinaOfertadaBean.idDisciplina}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{disciplinaOfertadaBean.disciplina}" var="disciplina"
+					<f:selectItems value="#{disciplinaBean.disciplinas}" var="disciplina"
 						itemLabel="#{disciplina.nome}" itemValue="#{disciplina.id}" />
 				</p:selectOneMenu>
 				
 				<p:outputLabel for="disciplinaOfertada_professor" value="Professor:" />
 				<p:selectOneMenu id="disciplinaOfertada_professor"
-					value="#{disciplinaOfertadaBean.professor.id}" style="width:125px">
+					value="#{disciplinaOfertadaBean.idProfessor}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{disciplinaOfertadaBean.professor}" var="aux"
-						itemLabel="#{aux.professor.nome}" itemValue="#{aux.id}" />
+					<f:selectItems value="#{professorBean.professors}" var="aux"
+						itemLabel="#{aux.nome}" itemValue="#{aux.id}" />
 				</p:selectOneMenu>
 
 				<h:panelGroup rendered="#{disciplinaOfertadaBean.alterar == false}">

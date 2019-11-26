@@ -2,11 +2,11 @@ package br.unitins.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +25,7 @@ public class Frequencia implements Serializable{
 	
 	private String horafinal;
 	
+	@ManyToOne
 	private Matricula matricula;
 
 	public Integer getId() {

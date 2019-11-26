@@ -19,6 +19,7 @@ import br.unitins.model.Periodo;
 public class PeriodoBean implements Serializable {
 	@EJB
 	private PeriodoEJB periodoEJB;
+	@EJB
 	private DisciplinaEJB disciplinaEJB;
 
 	private Periodo periodo;
