@@ -15,16 +15,16 @@
 					action="cadastroFrequencia?faces-redirect=true" update="form" />
 				<h3>Frequencias</h3>
 				<p:accordionPanel value="#{frequenciaBean.frequencias}" var="fre" id="form">
-					<p:tab title="#{fre.matricula}">
+					<p:tab title="#{fre.matricula.aluno.nome}">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputText value="ID:" style="font-weight: bold" />
 							<h:outputText value="#{fre.id}" />
-							<h:outputText value="nota A1:" style="font-weight: bold" />
-							<h:outputText value="#{fre.nota1}" />
-							<h:outputText value="nota A2:" style="font-weight: bold" />
-							<h:outputText value="#{fre.nota2}" />
-							<h:outputText value="nota Exame:" style="font-weight: bold" />
-							<h:outputText value="#{fre.exame}" />
+							<h:outputText value="Data:" style="font-weight: bold" />
+							<h:outputText value="#{fre.date}" />
+							<h:outputText value="Hora inicio:" style="font-weight: bold" />
+							<h:outputText value="#{fre.horainicio}" />
+							<h:outputText value="Hora final:" style="font-weight: bold" />
+							<h:outputText value="#{fre.horafinal}" />
 							
 							<p:outputLabel for="frequencia_matricula" value="Matricula: " />
 							<p:selectOneMenu id="frequencia_matricula"

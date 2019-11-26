@@ -21,9 +21,9 @@ public class Frequencia implements Serializable{
 	
 	private Date date;
 	
-	private LocalDate horainicio;
+	private String horainicio;
 	
-	private LocalDate horafinal;
+	private String horafinal;
 	
 	private Matricula matricula;
 
@@ -43,19 +43,19 @@ public class Frequencia implements Serializable{
 		this.date = date;
 	}
 
-	public LocalDate getHorainicio() {
+	public String getHorainicio() {
 		return horainicio;
 	}
 
-	public void setHorainicio(LocalDate horainicio) {
+	public void setHorainicio(String horainicio) {
 		this.horainicio = horainicio;
 	}
 
-	public LocalDate getHorafinal() {
+	public String getHorafinal() {
 		return horafinal;
 	}
 
-	public void setHorafinal(LocalDate horafinal) {
+	public void setHorafinal(String horafinal) {
 		this.horafinal = horafinal;
 	}
 

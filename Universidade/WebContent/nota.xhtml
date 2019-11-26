@@ -15,7 +15,7 @@
 					action="cadastroNota?faces-redirect=true" update="form" />
 				<h3>Notas</h3>
 				<p:accordionPanel value="#{notaBean.notas}" var="nota" id="form">
-					<p:tab title="#{nota.matricula}">
+					<p:tab title="#{nota.matricula.aluno.nome}">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputText value="ID:" style="font-weight: bold" />
 							<h:outputText value="#{nota.id}" />

@@ -10,31 +10,35 @@
 	<ui:define name="conteudo">
 		<h:form id="form2">
 			<h:panelGrid columns="2" cellpadding="10">
-				<h:outputText value="Nota A1: " />
-				<p:inputText value="#{notaBean.nota.nota1}" />
-				<h:outputText value="Nota A2: " />
-				<p:inputText value="#{notaBean.nota.nota2}" />
-				<h:outputText value="Nota Exame: " />
-				<p:inputText value="#{notaBean.nota.exame}" />
+				<p:outputLabel for="mask" value="Data:" />
+				<p:calendar id="mask" value="#{frequenciaBean.frequencia.date}"
+					pattern="yyyy-MM-dd" mask="true">
+					<f:convertDateTime type="Date" pattern="yyyy-MM-dd" />
+				</p:calendar>
 
-				<p:outputLabel for="nota_matricula" value="Faculdade:" />
-				<p:selectOneMenu id="nota_matricula"
-					value="#{notaBean.matricula.id}" style="width:125px">
+				<h:outputText value="Hora Inicio: " />
+				<p:inputText value="#{frequenciaBean.frequencia.horainicio}" />
+				<h:outputText value="Hora Final: " />
+				<p:inputText value="#{frequenciaBean.frequencia.horafinal}" />
+
+				<p:outputLabel for="frequencia_matricula" value="Faculdade:" />
+				<p:selectOneMenu id="frequencia_matricula"
+					value="#{frequenciaBean.matricula.id}" style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{notaBean.matricula}" var="inst"
+					<f:selectItems value="#{frequenciaBean.matricula}" var="inst"
 						itemLabel="#{inst.aluno.nome}" itemValue="#{inst.id}" />
 				</p:selectOneMenu>
 
-				<h:panelGroup rendered="#{notaBean.alterar == false}">
-					<p:commandButton value="Cadastrar" action="#{notaBean.inserir()}"
-						update="form2" />
-					<p:commandButton value="Novo" action="#{notaBean.novo}"
+				<h:panelGroup rendered="#{frequenciaBean.alterar == false}">
+					<p:commandButton value="Cadastrar"
+						action="#{frequenciaBean.inserir()}" update="form2" />
+					<p:commandButton value="Novo" action="#{frequenciaBean.novo}"
 						update="form2" />
 				</h:panelGroup>
 
-				<h:panelGroup rendered="#{notaBean.alterar}">
-					<p:commandButton value="Alterar" action="#{notaBean.voltar()}"
-						update="form2" />
+				<h:panelGroup rendered="#{frequenciaBean.alterar}">
+					<p:commandButton value="Alterar"
+						action="#{frequenciaBean.voltar()}" update="form2" />
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:form>
