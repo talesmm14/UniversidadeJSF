@@ -19,8 +19,15 @@
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputText value="ID:" style="font-weight: bold" />
 							<h:outputText value="#{curso.id}" />
-							<h:outputText value="Faculdade:" style="font-weight: bold" />
-							<h:outputText value="#{curso.instituicao}" />
+							<p:outputLabel for="curso_instituicao" value="Faculdade:" />
+							<p:selectOneMenu id="curso_instituicao"
+								value="#{cursoBean.instituicao.id}"
+								style="width:125px">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItems value="#{cursoBean.instituicao}"
+									var="aux" itemLabel="#{aux.nome}"
+									itemValue="#{aux.id}" />
+							</p:selectOneMenu>
 							<p:commandButton value="Deletar"
 								action="#{cursoBean.apagar(curso)}" update="form" />
 							<p:commandButton value="Alterar"

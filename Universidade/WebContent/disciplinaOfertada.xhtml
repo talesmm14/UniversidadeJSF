@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<p:layoutUnit position="center">
+			
+			<h:form >
+			<p:commandButton value="Cadastrar nova disciplina ofertada" action="cadastroDisciplinaOfertada?faces-redirect=true" update="form"/>
+				<h3>Disciplinas Ofertadas</h3>
+				<p:accordionPanel value="#{disciplinaOfertadaBean.disciplinaOfertadas}" var="disciplinaOfertada" id="form">
+					<p:tab title="#{disciplinaOfertada.disciplina.nome}" >
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{disciplinaOfertada.id}" />
+							<h:outputText value="Semestre:" style="font-weight: bold" />
+							<h:outputText value="#{disciplinaOfertada.semestre.nome}" />
+							<h:outputText value="Professor:" style="font-weight: bold" />
+							<h:outputText value="#{disciplinaOfertada.professor.nome}" />
+							<p:commandButton value="Deletar" action="#{disciplinaOfertadaBean.apagar(disciplinaOfertada)}" update="form"/>
+							<p:commandButton value="Alterar" action="#{disciplinaOfertadaBean.alterar(disciplinaOfertada)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+
+		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
+</html>

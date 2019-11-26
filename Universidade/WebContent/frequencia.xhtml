@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<p:layoutUnit position="center">
+
+			<h:form>
+				<p:commandButton value="Cadastrar nova frequencia"
+					action="cadastroFrequencia?faces-redirect=true" update="form" />
+				<h3>Frequencias</h3>
+				<p:accordionPanel value="#{frequenciaBean.frequencias}" var="fre" id="form">
+					<p:tab title="#{fre.matricula}">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{fre.id}" />
+							<h:outputText value="nota A1:" style="font-weight: bold" />
+							<h:outputText value="#{fre.nota1}" />
+							<h:outputText value="nota A2:" style="font-weight: bold" />
+							<h:outputText value="#{fre.nota2}" />
+							<h:outputText value="nota Exame:" style="font-weight: bold" />
+							<h:outputText value="#{fre.exame}" />
+							
+							<p:outputLabel for="frequencia_matricula" value="Matricula: " />
+							<p:selectOneMenu id="frequencia_matricula"
+								value="#{frequenciaBean.matricula.id}"
+								style="width:125px">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItems value="#{fre.matricula}"
+									var="aux" itemLabel="#{aux.aluno.nome}"
+									itemValue="#{aux.id}" />
+							</p:selectOneMenu>
+							<p:commandButton value="Deletar"
+								action="#{frequenciaBean.apagar(fre)}" update="form" />
+							<p:commandButton value="Alterar"
+								action="#{frequenciaBean.alterar(fre)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
+</html>

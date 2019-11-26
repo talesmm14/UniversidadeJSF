@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form2">
+
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText value="Nome: " />
+				<p:inputText 
+					value="#{periodoBean.periodo.nome}" />
+				
+				<p:outputPanel>
+							<p:dataList value="#{periodoBean.periodos}" var="aux"
+								semptyMessage="Sem disciplinas cadastradas">
+								<p:column>
+								<f:facet name="header">
+										<h:outputText value="Disciplina" />
+									</f:facet>
+									<h:outputText value="#{aux.nome}" />
+								</p:column>
+								<p:column>&nbsp;&nbsp;&nbsp;&nbsp;</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Ação" />
+									</f:facet>
+									<p:commandButton value="+"
+										action="#{periodoBean.cadastrarDisciplinas(aux)}" update="form3" />
+								</p:column>
+							</p:dataList>
+						</p:outputPanel>
+
+				<h:panelGroup rendered="#{periodoBean.alterar == false}">
+					<p:commandButton value="Cadastrar"
+						action="#{periodoBean.inserir()}" update="form2" />
+					<p:commandButton value="Novo" action="#{periodoBean.novo}"
+						update="form2" />
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{periodoBean.alterar}">
+					<p:commandButton value="Alterar"
+						action="#{periodoBean.voltar()}" update="form2" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

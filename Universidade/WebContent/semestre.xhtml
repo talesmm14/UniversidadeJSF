@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<p:layoutUnit position="center">
+			
+			<h:form >
+			<p:commandButton value="Cadastrar novo semestre" action="cadastroSemestre?faces-redirect=true" update="form"/>
+				<h3>Semestres</h3>
+				<p:accordionPanel value="#{semestreBean.semestres}" var="semestre" id="form">
+					<p:tab title="#semestre.nome}" >
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{semestre.id}" />
+							<p:commandButton value="Deletar" action="#{semestreBean.apagar(semestre)}" update="form"/>
+							<p:commandButton value="Alterar" action="#{semestreBean.alterar(semestre)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+
+		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
+</html>

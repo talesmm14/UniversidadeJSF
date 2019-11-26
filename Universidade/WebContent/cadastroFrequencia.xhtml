@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form2">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:outputText value="Nota A1: " />
+				<p:inputText value="#{notaBean.nota.nota1}" />
+				<h:outputText value="Nota A2: " />
+				<p:inputText value="#{notaBean.nota.nota2}" />
+				<h:outputText value="Nota Exame: " />
+				<p:inputText value="#{notaBean.nota.exame}" />
+
+				<p:outputLabel for="nota_matricula" value="Faculdade:" />
+				<p:selectOneMenu id="nota_matricula"
+					value="#{notaBean.matricula.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{notaBean.matricula}" var="inst"
+						itemLabel="#{inst.aluno.nome}" itemValue="#{inst.id}" />
+				</p:selectOneMenu>
+
+				<h:panelGroup rendered="#{notaBean.alterar == false}">
+					<p:commandButton value="Cadastrar" action="#{notaBean.inserir()}"
+						update="form2" />
+					<p:commandButton value="Novo" action="#{notaBean.novo}"
+						update="form2" />
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{notaBean.alterar}">
+					<p:commandButton value="Alterar" action="#{notaBean.voltar()}"
+						update="form2" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

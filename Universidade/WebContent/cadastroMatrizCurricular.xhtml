@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form2">
+
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText value="Nome: " />
+				<p:inputText 
+					value="#{matrizCurricularBean.matrizCurricular.nome}" />
+
+				<h:outputText value="CH: " />
+				<p:inputText 
+					value="#{matrizCurricularBean.matrizCurricular.ch}" />
+
+
+				<p:outputLabel for="matrizCurricular_curso" value="Curso:" />
+				<p:selectOneMenu id="matrizCurricular_curso"
+					value="#{matrizCurricularBean.aluno.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{matrizCurricularBean.curso}" var="curso"
+						itemLabel="#{curso.nome}" itemValue="#{curso.id}" />
+				</p:selectOneMenu>
+				
+				<p:outputPanel>
+							<p:dataList value="#{matrizCurricularBean.periodos}" var="aux"
+								semptyMessage="Sem periodos cadastrados">
+								<p:column>
+								<f:facet name="header">
+										<h:outputText value="Periodo" />
+									</f:facet>
+									<h:outputText value="#{aux.nome}" />
+								</p:column>
+								<p:column>&nbsp;&nbsp;&nbsp;&nbsp;</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Ação" />
+									</f:facet>
+									<p:commandButton value="+"
+										action="#{matrizCurricularBean.cadastrarPeriodos(aux)}" update="form3" />
+								</p:column>
+							</p:dataList>
+						</p:outputPanel>
+
+				<h:panelGroup rendered="#{matrizCurricularBean.alterar == false}">
+					<p:commandButton value="Cadastrar"
+						action="#{matrizCurricularBean.inserir()}" update="form2" />
+					<p:commandButton value="Novo" action="#{matrizCurricularBean.novo}"
+						update="form2" />
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{matrizCurricularBean.alterar}">
+					<p:commandButton value="Alterar"
+						action="#{matrizCurricularBean.voltar()}" update="form2" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

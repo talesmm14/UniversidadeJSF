@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form2">
+		
+			<h:panelGrid columns="2" cellpadding="10">
+			
+			<p:outputLabel for="disciplinaOfertada_semestre" value="Semestre:" />
+				<p:selectOneMenu id="disciplinaOfertada_semestre"
+					value="#{disciplinaOfertadaBean.semestre.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{disciplinaOfertadaBean.semestre}" var="semestre"
+						itemLabel="#{semestre.nome}" itemValue="#{semestre.id}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="disciplinaOfertada_disciplina" value="Disciplina:" />
+				<p:selectOneMenu id="disciplinaOfertada_disciplina"
+					value="#{disciplinaOfertadaBean.disciplina.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{disciplinaOfertadaBean.disciplina}" var="disciplina"
+						itemLabel="#{disciplina.nome}" itemValue="#{disciplina.id}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="disciplinaOfertada_professor" value="Professor:" />
+				<p:selectOneMenu id="disciplinaOfertada_professor"
+					value="#{disciplinaOfertadaBean.professor.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{disciplinaOfertadaBean.professor}" var="aux"
+						itemLabel="#{aux.professor.nome}" itemValue="#{aux.id}" />
+				</p:selectOneMenu>
+
+				<h:panelGroup rendered="#{disciplinaOfertadaBean.alterar == false}">
+					<p:commandButton value="Cadastrar"
+						action="#{disciplinaOfertadaBean.inserir()}" update="form2" />
+					<p:commandButton value="Novo" action="#{disciplinaOfertadaBean.novo}"
+						update="form2" />
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{disciplinaOfertadaBean.alterar}">
+					<p:commandButton value="Alterar" action="#{disciplinaOfertadaBean.voltar()}"
+						update="form2" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
