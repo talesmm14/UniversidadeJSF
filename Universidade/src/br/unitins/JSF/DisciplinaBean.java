@@ -3,6 +3,7 @@ package br.unitins.JSF;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -19,6 +20,8 @@ public class DisciplinaBean implements Serializable {
 	private DisciplinaEJB disciplinaEJB;
 
 	private Disciplina disciplina;
+	
+	Random geradorCH = new Random();
 
 	private List<Disciplina> disciplinas;
 	private Boolean alterar = false;
@@ -29,6 +32,7 @@ public class DisciplinaBean implements Serializable {
 	}
 
 	public String inserir() {
+		disciplina.setCh(geradorCH.nextInt(1000));
 		disciplinaEJB.insert(disciplina);
 		novo();
 		return null;

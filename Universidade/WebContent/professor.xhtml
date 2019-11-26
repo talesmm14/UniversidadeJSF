@@ -8,6 +8,27 @@
 
 <ui:composition template="/index.xhtml">
 	<ui:define name="conteudo">
+		<p:layoutUnit position="center">
+
+			<h:form>
+				<p:commandButton value="Cadastrar novo professor"
+					action="cadastroProfessor?faces-redirect=true" update="form" />
+				<h3>Professores</h3>
+				<p:accordionPanel value="#{professorBean.professors}" var="professor" id="form">
+					<p:tab title="#{professor.nome}">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{professor.id}" />
+							<p:commandButton value="Deletar"
+								action="#{professorBean.apagar(professor)}" update="form" />
+							<p:commandButton value="Alterar"
+								action="#{professorBean.alterar(professor)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+
+		</p:layoutUnit>
 	</ui:define>
 </ui:composition>
 </html>

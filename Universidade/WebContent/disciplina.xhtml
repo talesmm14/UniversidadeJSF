@@ -8,6 +8,30 @@
 
 <ui:composition template="/index.xhtml">
 	<ui:define name="conteudo">
+	<p:layoutUnit position="center">
+			
+			<h:form >
+			<p:commandButton value="Cadastrar nova disciplina" action="cadastroDisciplina?faces-redirect=true" update="form"/>
+				<h3>Disciplinas</h3>
+				<p:accordionPanel value="#{disciplinaBean.disciplinas}" var="disciplina" id="form">
+					<p:tab title="#{disciplina.nome}" >
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="ID:" style="font-weight: bold" />
+							<h:outputText value="#{disciplina.id}" />
+							<h:outputText value="COD:" style="font-weight: bold" />
+							<h:outputText value="#{disciplina.codigo}" />
+							<h:outputText value="Nome:" style="font-weight: bold" />
+							<h:outputText value="#{disciplina.nome}" />
+							<h:outputText value="Matricula:" style="font-weight: bold" />
+							<h:outputText value="#{disciplina.ch}" />
+							<p:commandButton value="Deletar" action="#{disciplinaBean.apagar(disciplina)}" update="form"/>
+							<p:commandButton value="Alterar" action="#{disciplinaBean.alterar(disciplina)}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+
+		</p:layoutUnit>
 	</ui:define>
 </ui:composition>
 </html>

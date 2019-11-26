@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form2">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:outputText value="Nome: " />
+				<p:inputText value="#{cursoBean.curso.nome}" />
+
+				<p:outputLabel for="curso_instituicao" value="Faculdade:" />
+				<p:selectOneMenu id="curso_instituicao"
+					value="#{cursoBean.instituicao.id}" style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{cursoBean.instituicao}" var="inst"
+						itemLabel="#{inst.nome}" itemValue="#{inst.id}" />
+				</p:selectOneMenu>
+
+				<h:panelGroup rendered="#{cursoBean.alterar == false}">
+					<p:commandButton value="Cadastrar" action="#{cursoBean.inserir()}"
+						update="form2" />
+					<p:commandButton value="Novo" action="#{cursoBean.novo}"
+						update="form2" />
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{cursoBean.alterar}">
+					<p:commandButton value="Alterar" action="#{cursoBean.voltar()}"
+						update="form2" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

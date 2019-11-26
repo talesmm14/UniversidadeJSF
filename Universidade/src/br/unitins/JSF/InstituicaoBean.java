@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -14,8 +15,10 @@ import br.unitins.model.Instituicao;
 @Named
 @SessionScoped
 public class InstituicaoBean implements Serializable {
-	private boolean alterar = false;
+	@EJB
 	private InstituicaoEJB instituicaoEJB;
+	
+	private boolean alterar = false;
 	
 	private Instituicao instituicao;
 	

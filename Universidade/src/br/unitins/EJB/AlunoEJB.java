@@ -30,6 +30,7 @@ public class AlunoEJB {
 	public Aluno load(Integer id) {
 		return em.find(Aluno.class, id);
 	}
+	
 	public List<Aluno> findAll() {
 		return em.createQuery("select a from Aluno a", Aluno.class).getResultList();
 	}

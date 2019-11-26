@@ -9,26 +9,22 @@
 <ui:composition template="/index.xhtml">
 	<ui:define name="conteudo">
 		<p:layoutUnit position="center">
-
-			<h:form>
-				<p:commandButton value="Cadastrar novo curso"
-					action="cadastroCurso?faces-redirect=true" update="form" />
-				<h3>Cursos</h3>
-				<p:accordionPanel value="#{cursoBean.cursos}" var="curso" id="form">
-					<p:tab title="#{curso.nome}">
+			
+			<h:form id="form">
+			<p:commandButton value="Cadastrar nova faculdade" action="cadastroInstituicao?faces-redirect=true" update="form"/>
+				<h3>Faculdades</h3>
+				<p:accordionPanel value="#{instituicaoBean.instituicoes}" var="instituicao" id="form">
+					<p:tab title="#{instituicao.nome}" >
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputText value="ID:" style="font-weight: bold" />
-							<h:outputText value="#{curso.id}" />
-							<h:outputText value="Faculdade:" style="font-weight: bold" />
-							<h:outputText value="#{curso.instituicao}" />
-							<p:commandButton value="Deletar"
-								action="#{cursoBean.apagar(curso)}" update="form" />
-							<p:commandButton value="Alterar"
-								action="#{cursoBean.alterar(curso)}" />
+							<h:outputText value="#{instituicao.id}" />
+							<p:commandButton value="Deletar" action="#{instituicaoBean.apagar(instituicao)}" update="form"/>
+							<p:commandButton value="Alterar" action="#{instituicaoBean.alterar(instituicao)}" />
 						</h:panelGrid>
 					</p:tab>
 				</p:accordionPanel>
 			</h:form>
+
 		</p:layoutUnit>
 	</ui:define>
 </ui:composition>

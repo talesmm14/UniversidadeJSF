@@ -24,7 +24,7 @@ public class Disciplina implements Serializable{
 	@NotEmpty
 	private String nome;
 	
-	@NotEmpty
+	
 	private Integer ch;
 
 	public Integer getId() {

@@ -10,17 +10,13 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "instituicao")
+
 public class Instituicao implements Serializable{
 	private static final long serialVersionUID = -4990796807185567100L;
 	
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
-	public Instituicao() {
-		this.id = 1;
-		this.nome = "UniPotaria";
-	}
 
 	@NotEmpty
 	private String nome;
